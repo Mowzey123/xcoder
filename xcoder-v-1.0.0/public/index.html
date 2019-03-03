@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+  <link rel="stylesheet" type="text/css" href="css/animate.min.css">
+  <link rel="stylesheet" type="text/css" href="css/material.min.css"/>
+  <link rel="stylesheet" type="text/css" href="css/material-icons.css"/>
+  <link rel="stylesheet" type="text/css" href="css/materialdesignicons.min.css"/>
+  <link rel="stylesheet" type="text/css" href="css/styles.css"/>
+</head>
+<body style="background: #31AAE1 !important;">
+	<div style="margin:100px auto; color:#fff; ">
+		<center>
+			<div class="free-100"></div>
+			<div class="free-20"></div>
+			<h3 style="font-family: Roboto-Thin;">XCODER</h3>
+			<div id="p2" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
+			<div class="free-50"></div>
+			<P style="font-size:12px;">product of xaecia inc.</P>	
+		</center>
+	</div>
+</body>
+
+<script type="text/javascript" src="js/material.min.js"></script>
+<script>
+    setTimeout(function() {
+        window.location='http://127.0.0.1:3700/main.html';
+    }, 100);
+
+  document.querySelector('#p1').addEventListener('mdl-componentupgraded', function() {
+    this.MaterialProgress.setProgress(44);
+  });
+
+
+</script>
+</html>

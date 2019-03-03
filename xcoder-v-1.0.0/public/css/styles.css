@@ -1,0 +1,229 @@
+@font-face{
+    font-family: Roboto-Thin;
+    src:url(../fonts/Roboto-Thin.ttf);
+    src:url(../fonts/Roboto-Thin.woff);
+    src:url(../fonts/Roboto-Thin.eot);
+    src:url(../fonts/Roboto-Thin.svg);
+    src:url(../fonts/Roboto-Thin.otf);
+}
+@font-face{
+    font-family: Roboto-Regular;
+    src:url(../fonts/Roboto-Regular.ttf);
+    src:url(../fonts/Roboto-Regular.woff);
+    src:url(../fonts/Roboto-Regular.eot);
+    src:url(../fonts/Roboto-Regular.svg);
+    src:url(../fonts/Roboto-Regular.otf);
+}
+*{
+	margin:0;
+	padding:0;
+}
+body{
+	margin:0;
+	background:#272822 !important;
+	padding:0;
+}
+
+.free-0{clear: both; width: 100%; height: 0px;}
+.free-5{clear: both; width: 100%; height: 5px;}
+.free-10{clear: both; width: 100%; height: 10px;}
+.free-20{clear: both; width: 100%; height: 20px;}
+.free-30{clear: both; width: 100%; height: 30px;}
+.free-40{clear: both; width: 100%; height: 40px;}
+.free-50{clear: both; width: 100%; height: 50px;}
+.free-100{clear: both; width: 100%; height: 100px;}
+
+}
+
+/*THESE ARE THE STYLES FOR MY SCROLLS*/
+div.results::-webkit-scrollbar{background:lightblue; width:6px; }
+div.results::-webkit-scrollbar-button{background:none;}
+div.results::-webkit-scrollbar-track{background:#f1f1f1;}
+div.results::-webkit-scrollbar-track-piece{background:#f1f1f1;}
+div.results::-webkit-scrollbar-thumb{background:#aaa;  border-radius:20px;}
+::-webkit-scrollbar{background:#fff; width:6px; }
+::-webkit-scrollbar-button{background:none;}
+::-webkit-scrollbar-track{background:#f7f7ff7;}
+::-webkit-scrollbar-track-piece{background:#f7f7ff7;}
+::-webkit-scrollbar-thumb{background:#888;  border-radius:20px;}
+
+/*=======================================STYLES FOR THE SIDE BAR WITH OPEN FILES================================*/
+.my-side-menu .mdl-navigation__link{
+    padding:5px 15px 5px !important;
+    color:#222 !important;
+    font-size:12px !important;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.my-top-menu .active{
+    color:#31AAE1 !important;
+    margin-right: 40px;
+}
+
+.my-top-menu .mdl-chip{
+    margin-right: 20px;
+    background:none;
+    border-radius:0;
+    color:#aaa;
+}
+
+.my-top-menu .mdl-chip .material-icons{
+    color:#aaa;
+    font-size: 14px;
+}
+
+.nav-tabs{
+    border-bottom:1px solid #555;
+    background:#171814;
+}
+
+.nav-tabs li a{
+    border-radius: 0;
+    margin:0;
+    border:none;
+    border-right:1px solid #272822 !important;
+    background:#3D3D3B;
+    color:#aaa;
+    width: 150px;
+    overflow: hidden;
+    padding:5px 30px;
+}
+
+.nav-tabs li a:hover{
+    background:#171814;
+}
+
+.nav-tabs .active a{
+    border:none !important;
+    color:lightblue !important;
+    background: #272822 !important;
+}
+
+.tab-content{
+    color:#aaa !important;
+    padding:20px;
+    font-size:11px !important;
+}
+
+
+
+
+
+
+/*===================================EXTRACTED FROM MAIN.HTML==============================================*/
+    .codeEditor-dark{
+      width: 100%;
+      padding: 20px;
+      height: 85vh !important;
+      overflow: auto;
+      background:#333 !important;
+      color:lightblue !important;
+      border:none;
+      border-radius: 0;
+      margin:0;
+    }
+
+    .codeEditor-light{
+        padding: 20px;
+      width: 100%;
+      height: 85vh !important;
+      overflow: auto;
+      background:snow !important;
+      color:#333 !important;
+      border:none;
+      border-radius: 0;
+      margin:0;  
+    }
+    .tab-content{
+      padding:0;
+    }
+    .command{
+      border-radius: 0;
+      background:rgba(253,253,253,.2);
+      border:none;
+      color:lime;
+      font-size: 12px;
+      padding:10px;
+      height: 35px !important;
+      overflow: hidden;
+      resize: none !important;
+    }
+    .codeEditor{
+      resize: none !important;
+    }
+    .speak-section{
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      border:none !important;
+      width: 100%;
+      padding:10px;
+      background:rgba(204, 204, 204, .3);
+      text-align: center;
+    }
+    #start_button{
+      width: 50px;
+      height: 50px;
+      border-radius: 100%;
+      background: rgba(181, 180, 185, 0.6);
+      margin: 0 auto;
+      transition-property: background;
+      transition-duration: .4s;
+    }
+    #start_button:hover{
+      background: rgba(181, 180, 185, 0.9);
+      cursor: pointer;
+    }
+
+    #start_button .mdi{
+      color: #706da6 !important;
+      font-size: 30px !important;
+    }
+
+    .results-dark {
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    padding: 15px;
+    text-align: left;
+    min-height: 50px;
+    background:#222;
+    color:lightblue;
+  }
+
+    .results-light {
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    padding: 15px;
+    text-align: left;
+    min-height: 50px;
+    background:#ccc;
+    color:#222;
+  }
+
+  .my-side-menu a{
+    padding-left:15px;
+  }
+  .projects-menu a{
+    background:;
+    padding:7px 15px 7px;
+    font-weight: bold;
+    color:#333;
+  }
+  #file{
+    background:none !important;
+  }
+  .openFile{
+    background:none; 
+    font-weight:lighter; 
+    font-size:12px; 
+    display:block;
+    text-decoration: none !important;
+    transition-property: background;
+    transition-duration: .4s;
+  }
+  .openFile:hover{
+    background:#aaa;
+  }

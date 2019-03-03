@@ -1,0 +1,31 @@
+{
+  "name": "xcoder",
+  "version": "1.0.0",
+  "description": "coding assistant",
+  "main": "public/index.html",
+  "windows": {
+    "width": 500,
+    "height": 500,
+    "toolbar": true
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "xaecia",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "*",
+    "chdir": "0.0.0",
+    "child_process": "^1.0.2",
+    "chokidar": "^1.7.0",
+    "connect": "^3.6.2",
+    "express": "*",
+    "fs": "0.0.1-security",
+    "http": "0.0.0",
+    "ls": "^0.2.1",
+    "path": "*",
+    "prompt": "^1.0.0",
+    "serve-static": "^1.12.3",
+    "socket.io": "^2.0.1"
+  }
+}

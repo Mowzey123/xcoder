@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Xcoder</title>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+  <link rel="stylesheet" type="text/css" href="css/animate.min.css">
+  <link rel="stylesheet" type="text/css" href="css/material.min.css"/>
+  <link rel="stylesheet" type="text/css" href="css/material-icons.css"/>
+  <link rel="stylesheet" type="text/css" href="css/materialdesignicons.min.css"/>
+  <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
+  <link rel="stylesheet" type="text/css" href="css/styles.css"/>
+  <script type="text/javascript" src="js/socket.io.js"></script>
+  <script>
+      var socket = io('http://localhost:3700/');
+      socket.on('connect',function(){
+        // console.log(socket.id);
+      });
+  </script>
+
+
+  </head>
+  <body>
+<!-- Always shows a header, even in smaller screens. -->
+<!-- The drawer is always open in large screens. The header is always shown,  even in small screens. -->
+<!-- Always shows a header, even in smaller screens. -->
+<!-- The drawer is always open in large screens. The header is always shown,
+  even in small screens. -->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+     <div class="mdl-layout__drawer"  style="box-shadow: none !important; border-right: 1px solid #ccc !important; box-shadow: none !important; background:#fafafa; color:#eee;">
+       <span class="mdl-layout-title" style="background:#aaa !important; font-size: 15px; padding: 0 15px 0 !important; color:#111;">PROJECTS</span>
+       <nav class="mdl-navigation my-side-menu projects-menu" style="padding:0;" id='projects'>
+       </nav>
+
+
+       <button class="speak-section">
+        <div id="start_button" class="animated tada" onclick="startButton()">
+          <img id="start_img" src="mic.gif" alt="Start"/>
+        </div>
+       </button>
+     </div>
+      <main class="mdl-layout__content" style="background: #f6f6f6;">
+        <div id="results" class="results-dark">
+          <span id="final_span" class="final"></span>
+          <span id="interim_span" class="interim"></span>
+          <p>
+        </div>
+
+          <div class="page-wrapper rows">
+            <div class="col-md-6" style="border-right: 1px solid #ddd;">
+              <h5 class="theme-color">Bot Settings</h5>
+              
+              <p id="msg"></p>
+              <input type="text" name="speech-msg" id="speech-msg" x-webkit-speech value="this is good, try it out" class="form-control">
+
+              <div class="option">
+                <label for="voice">Voice</label>
+                <select name="voice" id="voice" class="form-control"></select>
+              </div>
+              <div class="option">
+                <label for="volume">Volume</label>
+                  <div class="free-5"></div>
+                  <i class="fa fa-volume-up" style="float: left; font-size:20px; color:#999; cursor: pointer;"></i>
+                  <input class="mdl-slider mdl-js-slider" type="range" tabindex="0" min="0" max="10" step="1" name="volume" id="volume" value=""  style="display: inline-block;">
+              </div>
+              <div class="option">
+                <label for="rate">Rate</label>
+                  <div class="free-5"></div>
+                  <i class="mdi mdi-pulse" style="float: left; font-size:20px; color:#999; cursor: pointer;"></i>
+                <input class="mdl-slider mdl-js-slider" type="range" name="rate" min="0" max="10" value="" step="1" id="rate" tabindex="0">
+              </div>
+              <div class="option">
+                <label for="pitch">Pitch</label>
+                  <div class="free-5"></div>
+                  <i class="mdi mdi-voice" style="float: left; font-size:20px; color:#999; cursor: pointer;"></i>
+                <input class="mdl-slider mdl-js-slider" type="range" name="pitch" min="0" max="10" value="" step="1" id="pitch" tabindex="0">
+              </div>
+
+              <!-- <button id="speak" class="btn btn-primary">Speak</button> -->
+
+            </div>
+            <div class="col-md-6">
+              <h5 class="theme-color">Theme</h5>
+              <h6>Current Theme: <b class="theme"></b></h6>
+              <ul class="nav theme-menu">
+                <li style="background: #333;"><a href="#" style="color: lightblue !important;">Default / black</a></li>
+                <li style="background:lightblue;"><a href="#" style="color: #333 !important;">Light / Lite</a></li>
+<!--                 <li><a href="#">Monakai</a></li>
+                <li><a href="#">xaecia theme</a></li>
+                <li><a href="#">navi</a></li>
+                <li><a href="#">skyline</a></li> -->
+              </ul>
+            </div>
+          </div>
+         <!--THIS IS THE END OF THE PAGE COTENT-->
+      </main>
+  </div>
+
+  <script type="text/javascript" src="js/material.min.js"></script>
+  <!-- <script type="text/javascript" src="js/angular.min.js"></script> -->
+  <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/jquery.caret.js"></script>
+  <script type="text/javascript" src="js/bot.js"></script>
+  <!-- <script type="text/javascript" src="js/transcriber.js"></script> -->
+  <script type="text/javascript" src="js/controller.js"></script>
+  <script type="text/javascript" src="js/voicerecognizer.js"></script>
+  <script type="text/javascript" src="js/cursor.js"></script>
+  <script type="text/javascript" src="js/socket.io.js"></script> 
+
+
+  <script type="text/javascript">
+    var values = [ 
+          {
+            'value': 'one',
+            'num':'1'
+          },
+          {
+            'value': 'two',
+            'num':'2'
+          },
+          {
+            'value': 'three',
+            'num':'3'
+          },
+          {
+            'value': 'four',
+            'num':'4'
+          },
+          {
+            'value': 'five',
+            'num':'5'
+          },
+          {
+            'value': 'six',
+            'num':'6'
+          },{
+            'value': 'seven',
+            'num':'7'
+          },
+          {
+            'value': 'eight',
+            'num':'8'
+          },
+          {
+            'value': 'nine',
+            'num':'9'
+          },
+          {
+            'value': 'ten',
+            'num':'10'
+          }
+        ];
+
+    var volCommands = ['volume','vol'];
+    var rateCommands = ['rate', 'rates', 'great','right','red'];
+    var pitchCommands = ['pitch','peach','Peach','which','beach'];
+    var themeCommands = ['design'];
+
+
+    var stored_settings = JSON.parse(localStorage.getItem('settings'));
+    $(document).ready(function(){
+      set_settings(stored_settings);
+
+
+  var newSettings = JSON.parse(localStorage.getItem("settings"));
+
+    $('.theme').html(newSettings.theme);
+  if (newSettings.theme =="light" || newSettings.theme =="Lite") {
+    $('.codeEditor').removeClass('codeEditor-dark');
+    $('.codeEditor').addClass('codeEditor-light');
+
+    $('#results').removeClass('results-dark');
+    $('#results').addClass('results-light');
+  }
+
+
+
+    });
+
+    function set_settings(settings)
+    {
+      $('#volume').val(settings.volume);
+      $('#rate').val(settings.rate);
+      $('#pitch').val(settings.pitch);
+    }
+
+// var testObject = { 'one': 1, 'two': 2, 'three': 3 };
+
+// // Put the object into storage
+// localStorage.setItem('testObject', JSON.stringify(testObject));
+
+// // Retrieve the object from storage
+// var retrievedObject = localStorage.getItem('testObject');
+
+console.log(stored_settings);
+
+    // console.log(stored_settings);
+
+    var myvalue;
+  // TRANSCRIBER FUNCTION
+      function trans(command){
+
+        if (command !== "") {
+            var vol = command.split(' ');
+            mycommand = vol[0];
+            myvalue = vol[1];
+
+            if (myvalue !== undefined) {
+              if (myvalue.length > 2) {
+                for (var i = 0; i < values.length; i++) {
+                  if (values[i].value === myvalue) {
+                    myvalue = values[i].num;
+                  }
+                }          
+              }
+            }
+
+            if ($.inArray(mycommand, volCommands) > -1) {
+              volume(myvalue);
+            }else if($.inArray(mycommand, rateCommands) > -1)
+            {
+              rate(myvalue);
+            }else if($.inArray(mycommand, pitchCommands) > -1)
+            {
+              pitch(myvalue);
+            }else if($.inArray(mycommand, themeCommands) > -1)
+            {
+              theme(myvalue);
+            }else if(command == "home")
+            {
+              window.location = "main.html";
+            }else{
+              speak("I could not get your command please try again");
+            }
+            doOnClick();
+            final_transcript = '';  
+            $('#final_span').html('');
+        }
+      }
+
+        // adjustVolume();
+
+      function volume(value)
+      {
+        if (isNaN(value)) {
+          speak("illegal value, please try again");
+        }else{
+          $('#volume').val(value);
+          var settings = JSON.parse(localStorage.getItem('settings'));
+          settings.volume = value;
+          localStorage.setItem('settings', JSON.stringify(settings));
+          speak("volume adjusted successfully");
+        }
+      }
+
+      function rate(value)
+      {       
+        if (isNaN(value)) {
+          speak("illegal value, please try again");
+        }else{
+          $('#rate').val(value);
+          var settings = JSON.parse(localStorage.getItem('settings'));
+          settings.rate = value;
+          localStorage.setItem('settings', JSON.stringify(settings));
+          speak("rate adjusted successfully");
+        }
+      }
+
+      function pitch(value)
+      {
+        if (isNaN(value)) {
+          speak("illegal value, please try again");
+        }else{
+          $('#pitch').val(value);
+          var settings = JSON.parse(localStorage.getItem('settings'));
+          settings.pitch = value;
+          localStorage.setItem('settings', JSON.stringify(settings));
+          speak("pitch adjusted successfully");
+        }
+      }
+
+      function theme(value)
+      {
+        $('.theme').addClass(value);
+        var settings = JSON.parse(localStorage.getItem('settings'));
+        settings.theme = value;
+        localStorage.setItem('settings', JSON.stringify(settings));
+        // speak("theme adjusted to "+value);
+        // speak("reloading page to apply theme");
+        window.location = "settings.html";
+      }
+
+
+      function runTrial()
+      {
+        speak(speechMsgInput.value);
+      }
+  
+      function doOnClick() {
+          $('#start_button').click();
+          // console.log(5454);
+      }
+
+        $(document).ready(function(){
+
+        $('#start_button').click();
+
+
+    });
+
+
+
+  </script>
+</body>
+</html>

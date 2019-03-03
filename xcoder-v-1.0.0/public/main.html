@@ -1,0 +1,107 @@
+<html>
+  <head>
+    <title>Xcoder</title>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+  <link rel="stylesheet" type="text/css" href="css/animate.min.css">
+  <link rel="stylesheet" type="text/css" href="css/material.min.css"/>
+  <link rel="stylesheet" type="text/css" href="css/material-icons.css"/>
+  <link rel="stylesheet" type="text/css" href="css/materialdesignicons.min.css"/>
+  <link rel="stylesheet" type="text/css" href="css/styles.css"/>
+  <script type="text/javascript" src="js/socket.io.js"></script>
+  <script>
+      var socket = io('http://localhost:3700/');
+      socket.on('connect',function(){
+        console.log(socket.id);
+      });
+  </script>
+
+  </head>
+  <body>
+<!-- Always shows a header, even in smaller screens. -->
+<!-- The drawer is always open in large screens. The header is always shown,  even in small screens. -->
+<!-- Always shows a header, even in smaller screens. -->
+<!-- The drawer is always open in large screens. The header is always shown,
+  even in small screens. -->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+     <div class="mdl-layout__drawer"  style="box-shadow: none !important;  border-right: 1px solid #ccc !important; box-shadow: none !important; background:#fafafa; color:#eee;">
+       <span class="mdl-layout-title" style="background:#aaa !important; font-size: 15px; padding: 0 15px 0 !important; color:#111;">PROJECTS</span>
+       <nav class="mdl-navigation my-side-menu projects-menu" style="padding:0;" id='projects'>
+       </nav>
+
+
+       <button class="speak-section">
+        <div id="start_button" class="animated tada" onclick="startButton()">
+          <img id="start_img" src="mic.gif" alt="Start"/>
+        </div>
+       </button>
+     </div>
+      <main class="mdl-layout__content">
+
+
+
+  <ul id="myTab" class="nav nav-tabs">
+     <li style="display: none;"><a id="documentinuse">index.html</a></li>
+     <li class="active"><a href="#home" data-toggle="tab" id="fileopen">untitled</a></li>
+  </ul>
+  <div id="myTabContent" class="tab-content">
+     <div class="tab-pane fade in active" id="home" style="height: 90vh;">
+        <!-- <textarea class="command form-control" id="text" name="code" placeholder="Command" onkeyup="trans()"></textarea> -->
+        <div id="results" class="results-dark">
+          <span id="final_span" class="final"></span>
+          <span id="interim_span" class="interim"></span>
+          <p>
+        </div>
+        <textarea class="form-control codeEditor codeEditor-dark codepress javascript" id="editor"></textarea>
+        <!-- <pre data-start="0"><code class="language-html" id="editor"></code></pre> -->
+    </div>
+  </div>
+
+
+         <!--THIS IS THE END OF THE PAGE COTENT-->
+      </main>
+  </div>
+  <script type="text/javascript" src="js/angular.min.js"></script>
+  <script type="text/javascript" src="js/material.min.js"></script>
+  <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/jquery.caret.js"></script>
+  <script type="text/javascript" src="js/bot.js"></script>
+  <script type="text/javascript" src="js/controller.js"></script>
+  <script type="text/javascript" src="js/voicerecognizer.js"></script>
+  <script type="text/javascript" src="js/transcriber.js"></script>
+  <script type="text/javascript" src="js/cursor.js"></script>
+  <script type="text/javascript" src="js/socket.io.js"></script>
+<!-- <script src="src-min/ace.js" type="text/javascript" charset="utf-8"></script> -->
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('#editor').focus();
+
+
+
+  var newSettings = JSON.parse(localStorage.getItem("settings"));
+  if (newSettings.theme =="light" || newSettings.theme =="Lite") {
+    $('.codeEditor').removeClass('codeEditor-dark');
+    $('.codeEditor').addClass('codeEditor-light');
+
+    $('#results').removeClass('results-dark');
+    $('#results').addClass('results-light');
+  }
+
+    });
+    $(document).on('click','.openFile',function(e){
+      e.preventDefault();
+      $('#editor').focus();
+      var filename = $(this).attr('id');
+      $('#fileopen').html(filename);
+      readfile(filename);
+    });
+
+     // var editor = ace.edit("editor");
+     //  editor.getSession().setMode("ace/mode/html");
+
+
+  </script>
+
+</body>
+</html>
